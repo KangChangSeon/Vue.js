@@ -1,4 +1,9 @@
-@import './base.css';
+@import "./base.css";
+
+h2 {
+  color: aqua;
+  font-style: oblique;
+}
 
 #app {
   max-width: 1280px;
