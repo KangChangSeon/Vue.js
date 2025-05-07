@@ -1,30 +1,31 @@
 <script>
 export default {
-        
-          data() {
-                return {
-                    number : 0,
-                };
-          }, 
+  data() {
+    return {
+      gender: "male",
+    };
+  },
 
-          methods : {
-            increment(){
-                   this.number++;
-            },
-
-          }
-          
-
-      }
-
-
-
+  methods: {
+    login() {
+      console.log(`id : ${this.uid}`);
+      console.log(`pw : ${this.upw}`);
+    },
+    printData() {
+      console.log(`gender : ${this.gender}`);
+    },
+  },
+};
 </script>
 
 <template>
-  
-  <h1>{{ number }}</h1>
-
-  <button type="button" @click="increment">증가</button>
-
+  <form id="loginForm">
+    <label for="male">
+      <input type="radio" v-model="gender" value="male" />남성
+    </label>
+    <label for="female">
+      <input type="radio" v-model="gender" value="female" />여성
+    </label>
+    <button type="button" @click="printData">확인</button>
+  </form>
 </template>
