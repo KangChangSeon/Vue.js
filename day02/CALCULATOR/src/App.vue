@@ -12,12 +12,37 @@ export default {
     operation(e) {
       const n = e.currentTarget.value;
       if (["+", "-", "*", "/", "="].includes(n)) {
-        this.output = null;
-        this.operator = null;
-        this.prev = Number(this.cur);
-        this.cur = null;
-        return;
+        // this.output = null;
+        // this.operator = null;
+        // this.prev = Number(this.cur);
+        // this.cur = null;
+        // return;
+        this.cur = Number(this.cur);
+        if (this.operator != null) {
+          switch (this.operator) {
+            case "+":
+              this.prev = this.prev + this.cur;
+              break;
+            case "-":
+              this.prev = this.prev - this.cur;
+              break;
+            case "*":
+              this.prev = this.prev * this.cur;
+              break;
+            case "/":
+              this.prev = this.prev / this.cur;
+              break;
+          }
+          // 등호 (=) 이라면
+          if (n === "=") {
+            this.output = this.prev;
+            this.operator = null;
+            this.prev = null;
+          } else {
+          }
+        }
       }
+      console.log(n);
       this.cur = this.cur === null ? n : (this.cur += n);
       this.output = this.cur;
     },

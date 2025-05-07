@@ -8,10 +8,10 @@ export default {
       operator: null, // 연산자
       operatorActions: {
         // 사칙 연산을 수행하는 함수를 각각의 객체로 정의
-        '+': (a, b) => a + b,
-        '-': (a, b) => a - b,
-        '*': (a, b) => a * b,
-        '/': (a, b) => a / b,
+        "+": (a, b) => a + b,
+        "-": (a, b) => a - b,
+        "*": (a, b) => a * b,
+        "/": (a, b) => a / b,
       },
     };
   },
@@ -27,16 +27,16 @@ export default {
       // 연산 흐름을 제어하는 함수로 분리
       // 저장된 숫자가 없는데 연산 기호를 클릭한 경우
       if (!this.cur && !this.prev) {
-        alert('숫자를 먼저 입력하세요.');
+        alert("숫자를 먼저 입력하세요.");
         return;
       }
       // 사칙연산 기호를 연속으로 클릭한 경우
-      if (this.operator !== '' && !this.cur) {
-        alert('사칙연산 기호를 연달아 누를 수 없습니다.');
+      if (this.operator !== "" && !this.cur) {
+        alert("사칙연산 기호를 연달아 누를 수 없습니다.");
         return;
       }
       // 등호를 클릭해 결과를 노출한 후 다시 등호를 클릭한 경우
-      if (n === '=' && this.prev === this.cur) {
+      if (n === "=" && this.prev === this.cur) {
         return;
       }
       this.cur = Number(this.cur);
@@ -45,7 +45,7 @@ export default {
         // 위에서 operatorActions를 객체로 정의했고, 객체의 각 속성은 함수형 값을 가지는 메서드이기 때문에 아래처럼 코드 작성 가능
         this.prev = this.operatorActions[this.operator](this.prev, this.cur);
         // 등호면 연산 결과 노출
-        if (n === '=') {
+        if (n === "=") {
           this.output = this.prev;
           this.operator = null;
           this.cur = this.prev;
@@ -72,9 +72,9 @@ export default {
       // 연산 로직 분리
       // 클릭한 버튼 값 가져오기
       const n = e.currentTarget.value;
-      if (n === 'C') {
+      if (n === "C") {
         this.clear(); // 초기화 함수 호출
-      } else if (['+', '-', '*', '/', '='].includes(n)) {
+      } else if (["+", "-", "*", "/", "="].includes(n)) {
         this.calculate(n); // 연산 흐름 제어 함수 호출
       } else {
         this.userInput(n); // 사용자가 입력한 숫자 저장 함수 호출
@@ -121,7 +121,7 @@ export default {
 }
 
 body {
-  background-color: #ffffff	;
+  background-color: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -164,7 +164,7 @@ body {
   background-color: green;
 }
 
-.calculator form input[type='text'] {
+.calculator form input[type="text"] {
   grid-column: span 4;
   text-align: right;
   padding: 0 10px;
