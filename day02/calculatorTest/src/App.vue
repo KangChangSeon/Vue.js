@@ -34,11 +34,13 @@ export default {
         this.prev = this.cur;
         this.cur = null;
       }
+      console.log(n);
       this.operator = n;
     },
     userInput(n) {
       this.cur = this.cur === null ? n : (this.cur += n);
       this.output = this.cur;
+      console.log(this.cur);
     },
     operation(e) {
       const n = e.currentTarget.value;
