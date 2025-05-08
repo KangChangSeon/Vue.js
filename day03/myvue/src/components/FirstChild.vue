@@ -1,16 +1,24 @@
 <script>
 export default {
-  beforeUnmount() {
-    console.log("beforeUnmount");
+  data() {
+    return {
+      number: 5,
+    };
   },
-  unmounted() {
-    console.log("unmounted");
+  computed: {
+    doubleNum() {
+      return this.number * 2;
+    },
+  },
+  methods: {
+    increment() {
+      this.number++;
+    },
   },
 };
 </script>
 <template>
-  <h1>컴포넌트</h1>
-  <p>내가 만든 첫 번째 컴포넌트</p>
+  <h1>{{ number }}</h1>
 </template>
 <style>
 h1 {
