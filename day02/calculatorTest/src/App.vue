@@ -29,7 +29,7 @@ export default {
         return;
       }
 
-      // 연산자 없고 = 일때 처리리
+      // 연산자 없고 = 일때 처리
       if (n === "=" && this.operator === null) {
         return;
       }
@@ -58,7 +58,7 @@ export default {
     },
 
     userInput(n) {
-      // 소수점 중복
+      // 소수점 중복 (옵셔널 체이닝 사용)
       if (n === "." && this.cur?.includes(".")) {
         return;
       }
