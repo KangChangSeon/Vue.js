@@ -46,18 +46,18 @@ export default {
       const n = e.currentTarget.value;
       if (n === "C") {
         this.clear();
-      } else if (["+", "-", "*", "/"].includes(n)) {
+      } else if (["+", "-", "*", "/", "="].includes(n)) {
         this.calculate(n);
-      } else if (n === "=") {
-        if (this.operator !== null) {
-          this.prev = this.operateActions[this.operator](
-            Number(this.prev),
-            Number(this.cur)
-          );
-          this.output = this.prev;
-          this.operator = null;
-          this.prev = null;
-        }
+        // } else if (n === "=") {
+        //   if (this.operator !== null) {
+        //     this.prev = this.operateActions[this.operator](
+        //       Number(this.prev),
+        //       Number(this.cur)
+        //     );
+        //     this.output = this.prev;
+        //     this.operator = null;
+        //     this.prev = null;
+        //   }
       } else {
         this.userInput(n);
       }
