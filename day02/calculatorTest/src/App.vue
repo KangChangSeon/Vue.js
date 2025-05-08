@@ -22,7 +22,25 @@ export default {
       this.cur = null;
       this.operator = null;
     },
+
     calculate(n) {
+      // 연산자만 눌렀을 때 처리
+      if (this.cur === null && this.prev === null) {
+        return;
+      }
+
+      // 연산자 없고 = 일때 처리리
+      if (n === "=" && this.operator === null) {
+        return;
+      }
+
+      // 0으로 나누기 금지
+      if (this.operator === "/" && Number(this.cur) === 0) {
+        alert("0으로 나눌 수 없습니다.");
+        this.clear();
+        return;
+      }
+
       if (this.operator !== null) {
         this.prev = this.operateActions[this.operator](
           Number(this.prev),
@@ -34,16 +52,30 @@ export default {
         this.prev = this.cur;
         this.cur = null;
       }
-      console.log(n);
-      this.operator = n;
+
+      // = 이후 연산자 처리
+      this.operator = n === "=" ? null : n;
     },
+
     userInput(n) {
+      // 소수점 중복
+      if (n === "." && this.cur?.includes(".")) {
+        return;
+      }
+
+      // 숫자 제한
+      if (this.cur !== null && this.cur.length >= 10) {
+        alert("10자리까지만 입력하세요");
+        return;
+      }
+
       this.cur = this.cur === null ? n : (this.cur += n);
       this.output = this.cur;
-      console.log(this.cur);
     },
+
     operation(e) {
       const n = e.currentTarget.value;
+
       if (n === "C") {
         this.clear();
       } else if (["+", "-", "*", "/", "="].includes(n)) {
