@@ -1,29 +1,34 @@
 <script>
-import FirstChild from "./components/FirstChild.vue";
+import UserProfile from "./components/UserProfile.vue";
 
 export default {
   components: {
-    FirstChild,
+    UserProfile,
   },
+
   data() {
     return {
-      domEl: null,
+      userName: "신세계",
+      age: 35,
     };
   },
-  mounted() {
-    const childNum = this.$refs.child.number;
-    const childDoubleNum = this.$refs.child.doubleNum;
-    console.log(`메서드 호출 전 : ${childNum}`);
-    console.log(`메서드 호출 전 : ${childDoubleNum}`);
-    setTimeout(() => {
-      this.$refs.child.increment();
-      console.log(`메서드 호출 전 : ${childNum}`);
-      console.log(`메서드 호출 전 : ${childDoubleNum}`);
-    }, 1000);
+
+  methods: {
+    printHello() {
+      alert("안녕하세요!");
+    },
+    onPrintHello(name, age) {
+      alert(`${name}, ${age}`);
+    },
   },
 };
 </script>
+
 <template>
-  <FirstChild ref="child"></FirstChild>
+  <UserProfile
+    @print-hello="printHello"
+    @onPrint-hello="(name, age) => onPrintHello(name, age)"
+  />
 </template>
-<style></style>
+
+<style scoped></style>
