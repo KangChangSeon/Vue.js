@@ -48,16 +48,6 @@ export default {
         this.clear();
       } else if (["+", "-", "*", "/", "="].includes(n)) {
         this.calculate(n);
-        // } else if (n === "=") {
-        //   if (this.operator !== null) {
-        //     this.prev = this.operateActions[this.operator](
-        //       Number(this.prev),
-        //       Number(this.cur)
-        //     );
-        //     this.output = this.prev;
-        //     this.operator = null;
-        //     this.prev = null;
-        //   }
       } else {
         this.userInput(n);
       }
@@ -65,10 +55,7 @@ export default {
   },
 };
 </script>
-<!-- 1. 초기화
-2. 계산
-3. 입력
-4. 버튼 이벤트 -->
+
 <template>
   <div class="calculator">
     <form name="forms">
