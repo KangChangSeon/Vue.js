@@ -51,9 +51,9 @@ export default {
         >delete</span
       >
       <span
-        class="material-symbols-outlined todo__delete-icon"
+        class="material-symbols-outlined todo__refresh-icon"
         @click="changeTodo(item.id)"
-        >change</span
+        >refresh</span
       >
     </div>
     <div v-if="computedTodo.length === 0" class="todo__item--no">
